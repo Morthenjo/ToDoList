@@ -1,5 +1,8 @@
 const toDoInput = document.querySelector("input");
 
+//                   FUNCTIONS
+
+//a function for the sort button to rearrange them alphabetically
 function sort() {
   let ul = document.querySelector("ul");
 
@@ -8,6 +11,7 @@ function sort() {
     .forEach((li) => ul.appendChild(li));
 }
 
+//a function to change the gif from waiting to writing and added writing sounds
 function changeImage() {
   let audio = new Audio("writing.mp3");
   audio.play();
@@ -26,6 +30,7 @@ function changeImage() {
   }, 1000);
 }
 
+//The main submit function, what happens when you press enter or hit the submit button
 function submit() {
   if (!toDoInput.value || toDoInput.value.match(/^ *$/)) return;
   changeImage();
@@ -78,11 +83,13 @@ function submit() {
   toDoInput.focus();
 }
 
+//code for the Enter key to work with the submit form
 toDoInput.addEventListener("keyup", (e) => {
   if (e.code !== "Enter") return;
   submit();
 });
 
+// the command for the Clear List button, deletes every element that was added
 document.querySelector("#deleteAll").addEventListener("click", () => {
   document.querySelectorAll("li").forEach((li) => li.remove());
 });

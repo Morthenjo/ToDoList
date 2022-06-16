@@ -8,7 +8,7 @@ function sort() {
 
   Array.from(ul.getElementsByTagName("LI"))
     .sort((a, b) => a.textContent.localeCompare(b.textContent))
-    .forEach((li) => ul.appendChild(li));
+    .forEach((li) => ul.append(li));
 }
 
 //a function to change the gif from waiting to writing and added writing sounds

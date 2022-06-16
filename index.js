@@ -8,9 +8,27 @@ function sort() {
     .forEach((li) => ul.appendChild(li));
 }
 
+function changeImage() {
+  let audio = new Audio("writing.mp3");
+  audio.play();
+  setTimeout(() => {
+    audio.pause();
+    audio.currentTime = 0;
+  }, 1000);
+  let images = document.querySelectorAll(".waiting");
+  images.forEach((images) => {
+    images.src = "writing.gif";
+  });
+  setTimeout(() => {
+    images.forEach((images) => {
+      images.src = "waiting.gif";
+    });
+  }, 1000);
+}
+
 function submit() {
   if (!toDoInput.value || toDoInput.value.match(/^ *$/)) return;
-
+  changeImage();
   const li = document.createElement("li");
   const p = document.createElement("p");
   const button = document.createElement("button");
@@ -37,6 +55,7 @@ function submit() {
       p.textContent = editfield.value;
       editfield.remove();
       button2.remove();
+      changeImage();
     }
     editfield.value = p.textContent;
     p.remove();

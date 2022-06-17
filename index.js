@@ -1,5 +1,11 @@
+//---------------------------------------------------------------------------
+//                   Const
+//---------------------------------------------------------------------------
 const toDoInput = document.querySelector("input");
+
+//---------------------------------------------------------------------------
 //                   FUNCTIONS
+//---------------------------------------------------------------------------
 
 //a function for the sort button to rearrange them alphabetically
 function sort() {
@@ -42,6 +48,7 @@ function localStore() {
   localStorage.setItem("isTask", JSON.stringify(storedList));
 }
 
+//Gets what is saved in the localStorage
 function getItem() {
   const storedItem = JSON.parse(localStorage.getItem("isTask"));
   document.querySelectorAll("li").forEach((li) => li.remove());
@@ -155,6 +162,9 @@ function submit() {
   console.log(localStorage);
 }
 
+//---------------------------------------------------------------------------
+//                         addEventListener
+//---------------------------------------------------------------------------
 //code for the Enter key to work with the submit form
 toDoInput.addEventListener("keyup", (e) => {
   if (e.code !== "Enter") return;
@@ -166,4 +176,12 @@ document.querySelector("#deleteAll").addEventListener("click", () => {
   document.querySelectorAll("li").forEach((li) => li.remove());
   localStorage.clear();
 });
-getItem();
+
+//---------------------------------------------------------------------------
+//                    Parse from localStorage
+//---------------------------------------------------------------------------
+
+// Loads the localStorage so it is stored in the page
+window.addEventListener("load", () => {
+  getItem();
+});
